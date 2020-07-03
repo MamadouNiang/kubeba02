@@ -1,0 +1,119 @@
+<app-header></app-header>
+<img class="dots" src="assets/img/dots.png" />
+<img class="path" src="assets/img/path4.png" />
+
+<div class="section" style="margin-top: 4%;">
+    <div class="container">
+        <h1>Users</h1>
+        <div class="row p-2">
+
+            <div class="col-md-3" *ngFor="let item of user">
+
+                <div class="card" *ngIf="!item.isedit; else elseBlock">
+                    <div class="card-body">
+                        <div class="card-title">
+                            Nom et Prenom :{{item.nom_prenom}}
+                        </div>
+                        <div class="card-subtitle">
+                            Email :{{item.email}}
+                        </div>
+                        <div class="card-text">
+                            Type users:{{item.userType}}
+                        </div>
+                        <div class="card-text">
+                            Telephone:{{item.telephone}}
+                        </div>
+                        <div class="card-text" *ngIf="item.userAccount == 'true'">
+                            Etat de votre compte: Actif
+                        </div>
+                        <div class="card-text" *ngIf="item.userAccount == 'false'">
+                            Etat de votre compte:Desactivé
+                        </div>
+                        <div class="card-text">
+                            Password: {{item.password}}
+                        </div>
+                        <div class="card-text">
+                            Contract Data:{{item.contrat}}
+                        </div>
+                        <div class="card-text text-center">
+                            <button style="margin-left: 5%;" (click)="editUser(item)" type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                <i class="tim-icons  icon-pencil"></i>
+                            </button>
+                            <button style="margin-left: 5%;" (click)="supprimer(item.id)" type="button" rel="tooltip" class="btn btn-danger btn-sm btn-icon">
+                                <i class="tim-icons icon-simple-remove"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <ng-template #elseBlock>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                Modification de l'utilisateur
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label>Nom et prenom</label>
+                                        <input type="text" [(ngModel)]="item.editnom_prenom">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Votre Email </label>
+                                        <input type="email" [(ngModel)]="item.editemail">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Numero de Telephone</label>
+                                        <input type="number" [(ngModel)]="item.edittelephone">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Mot de passe</label>
+                                        <input type="password" [(ngModel)]="item.editpassword">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Etat du Compte</label>
+                                        <!-- <input type="text" [(ngModel)]="item.edituserAccount"> -->
+                                        <select [(ngModel)]="item.edituserAccount">
+                                            <option ></option>
+                                            <option value="true">Activé</option>
+                                            <option value="false">Desactivé</option>
+                                          
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Contrat des Données Utulisateurs</label>
+                                        <input type="text" [(ngModel)]="item.editcontrat">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label>Type D'utilisateurs</label>
+                                        <select [(ngModel)]="item.edituserType">
+                                            <option ></option>
+                                            <option >Transporteur</option>
+                                            <option >Expediteur</option>
+                                            <option >Employé</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <button style="margin-left: 5%;" (click)="item.isedit=false" type="button" rel="tooltip" class="btn btn-warning btn-sm btn-icon">
+                                            <i class="tim-icons  icon-refresh-01"></i>
+                                        </button>
+                                        <button style="margin-left: 5%;" (click)="modifierUser(item)" type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                            <i class="tim-icons icon-check-2"></i>
+                                        </button>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

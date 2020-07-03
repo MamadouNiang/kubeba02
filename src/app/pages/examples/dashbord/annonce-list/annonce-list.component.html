@@ -1,0 +1,220 @@
+<div class="wrapper">
+    <img style="margin-top: -19%;" class="dots" src="assets/img/dots.png" />
+    <img style="margin-top: -17%;" class="path" src="assets/img/path4.png" />
+    <div class="container align-items-center" style="margin-top: 19%;">
+        <div class="row">
+
+            <div class="col-lg-12 mb-5 col-md-6 ml-0 mr-auto" style="margin-top: -10%;">
+
+                <div class="card card-coin card-plain">
+                    <div class="card-header">
+                        <!-- <img class="img-center img-fluid rounded-circle" /> -->
+
+                        <h4 class="title">
+                            <h1>Annonces Marchandises</h1>
+                        </h4>
+                        <div class="text-center">
+                            <button style="z-index: 10;" class="btn btn-info btn-right btn-sm btn-round" (click)="myModal2.show()">
+                            <i class="tim-icons icon-simple-add"></i>Ajouter
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="row p-2">
+                            <div class="col-md-3" *ngFor="let item of annonce;let j = index ">
+
+                                <img style="max-width:100px;" alt="Raised  image" class="img-center img-fluid rounded-circle" *ngIf="item.photo" [src]="item.photo">
+
+
+                                <div class="card" *ngIf="!item.isedit;">
+
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            Description :{{item.description}}
+                                        </div>
+                                        <div class="card-subtitle">
+                                            Typologie :{{item.typologie}}
+                                        </div>
+                                        <div class="card-text">
+                                            Poids:{{item.poids}}
+                                        </div>
+                                        <div class="card-text">
+                                            Date d'expedition:{{item.dateExp}}
+                                        </div>
+                                        <div class="card-text">
+                                            Date Livraison: {{item.dateLiv}}
+                                        </div>
+                                        <div class="card-text">
+                                            Date de creation:{{item.dateCreation}}
+                                        </div>
+                                        <div class="card-text text-center">
+                                            <button type="button" (click)="onViewMarchandise(j)" rel="tooltip" class="btn btn-info btn-sm btn-icon">
+                                                <i class="tim-icons icon-zoom-split" ></i>
+                                            </button>
+                                            <button style="margin-left: 5%;" type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                            <i class="tim-icons icon-email-85"></i>
+                                        </button>
+                                            <button style="margin-left: 5%;" type="button" (click)="onDeleteMarchandise(item.id,item.photo)" rel="tooltip" class="btn btn-danger btn-sm btn-icon">
+                                            <i class="tim-icons icon-simple-remove"></i>
+                                        </button>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- <div class="table-responsive">
+                            <div class="text-center">
+                                <button style="z-index: 10;" class="btn btn-info btn-right btn-sm btn-round" (click)="myModal2.show()">
+                                <i class="tim-icons icon-simple-add"></i>Ajouter
+                                </button>
+                            </div> -->
+
+                        <!-- <table class="table tablesorter" id="plain-table">
+                                <thead class="text-danger">
+                                    <tr>
+                                        <th class="headerr">#</th>
+                                        <th class="header">photo</th>
+                                        <th class="header">Description</th>
+                                        <th class="header">Typologie</th>
+                                        <th class="header">Poids</th>
+                                        <th class=" header">Date d'expedition</th>
+                                        <th class="header">Date de livraison</th>
+                                        <th class="header">Date de Creation</th>
+                                        <th class=" header">Actions</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr *ngFor="let marchandise of marchandises ; let i = index">
+                                        <td class="text-center color-label is-success">{{i}}</td>
+                                        <td><img style="max-width:70px;" alt="Raised circle image" class="img-fluid rounded-circle shadow-lg" *ngIf="marchandise.photo" [src]="marchandise.photo"></td>
+                                        <td>{{marchandise.description}}</td>
+                                        <td>{{marchandise.typologie}}</td>
+                                        <td>{{marchandise.poids}} Kg</td>
+                                        <td>{{marchandise.dateExp}}</td>
+                                        <td>{{marchandise.dateLiv}}</td>
+                                        <td>{{marchandise.dateCreation}}</td>
+                                        <td class="td-actions text-right"> -->
+                        <!-- <button type="button" (click)="onViewMarchandise(i)" rel="tooltip" class="btn btn-info btn-sm btn-icon">
+                                            <i class="tim-icons icon-zoom-split" ></i>
+                                        </button> -->
+                        <!-- <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                            <i class="tim-icons icon-settings-gear-63"></i>
+                                        </button> -->
+                        <!-- <button style="margin-left: 5%;" type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                            <i class="tim-icons  icon-pencil"></i>
+                                        </button>
+                                            <button style="margin-left: 5%;" type="button" (click)="onDeleteMarchandisee(marchandise)" rel="tooltip" class="btn btn-danger btn-sm btn-icon">
+                                            <i class="tim-icons icon-simple-remove"></i>
+                                        </button> -->
+
+                        <!-- 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table> -->
+
+                        <!-- </div> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div style="margin-top: -13%;" aria-hidden="true" aria-labelledby="myModalLabel" bsModal class="modal fade modal-black" #myModal2="bs-modal" id="myModal2" role="dialog" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center">
+                        <button aria-hidden="true" class="close" data-dismiss="modal" (click)="myModal2.hide()" type="button">
+                  <i class="tim-icons icon-simple-remove text-white"> </i>
+                </button>
+                        <div class="text-muted text-center ml-auto mr-auto">
+                            <h3 class="mb-0">Ajout d'une Marchandise</h3>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <div class="btn-wrapper text-center">
+                            <a class="btn btn-neutral btn-icon mr-1" href="javascript:void(0)">
+                                <img src="assets/img/github.svg" />
+                            </a>
+                            <a class="btn btn-neutral btn-icon" href="javascript:void(0)">
+                                <img src="assets/img/google.svg" />
+                            </a>
+                        </div>
+                        <div class="text-center text-muted mb-4 mt-3">
+                            <small> Ou connectez-vous avec vos identifiants </small>
+                        </div> -->
+
+                        <form [formGroup]="marchandiseForm" (ngSubmit)="onSaveMarchandise()">
+                            <div class="form-group">
+                                <label>Typologie : <span style="size: 2%;" class=" badge badge-warning">
+                                     selection multiple
+                                  </span> </label>
+                                <select id="inputState" class="form-control" multiple formControlName="typologie">
+                                    <option (click)="options()" >Solide</option>
+                                    <option (click)="options()">Liquide</option>
+                                    <option (click)="options()">Vracs</option>
+                                    <option (click)="autres()" >Autres ... </option>
+                                </select>
+                                <textarea type="text" *ngIf="autreClick" class="form-control" placeholder="Entrer votre type de typologie ici ... " formControlName="typologie"></textarea>
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col"> <label>Date d'Expedition</label>
+                                    <input type="date" on-change="change()" placement="top" min="{{minDateExp | date:'yyyy-MM-dd'}}" formControlName="dateExp" class="form-control">
+                                </div>
+                                <div class="col"> <label>Date Livraison</label>
+                                    <input type="date" placement="top" min="{{minDateLiv | date:'yyyy-MM-dd'}}" formControlName="dateLiv" class="form-control"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea type="text" class="form-control" placeholder="Entrer votre description ici ... " formControlName="description"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Poids</label>
+                                    <input type="number" placeholder="Poids ( Kg )" class="form-control" formControlName="poids">
+                                </div>
+                                <div class="col">
+                                    <label>Image</label>
+                                    <div class="input-group">
+                                        <input class="form-control" formControlName="photo" placeholder="Ajouter une image a votre marchandise" type="file" (change)="detectFiles($event)" accept="image/*" />
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                          <i class="tim-icons icon-image-02"> </i>
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <p class="text-success text-center" *ngIf="fileUploaded">Fichier chargé !</p>
+                                </div>
+                            </div>
+                            <div class="form-group" hidden>
+                                <input type="text" class="form-control" formControlName="dateCreation">
+                            </div>
+                            <div style=" display: flex; justify-content: center;">
+                                <button type="reset" class="btn btn-danger  mr-1" (click)="reset()">Vider</button>
+                                <button class="btn btn-success" [disabled]="marchandiseForm.invalid || fileIsUploading" (click)="myModal2.hide()" type="submit">save</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="margin-top: 4%;">
+        <div class="container">
+
+        </div>
+    </div>
+</div>
