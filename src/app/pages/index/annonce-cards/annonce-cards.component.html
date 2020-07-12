@@ -1,38 +1,41 @@
+"
 <!-- card pour les annonces -->
 
-<div class="row">
-    <div class="col-lg-5 col-md-6">
+<div class="row justify-content-md-center">
+    <div class="col col-lg-4">
         <carousel [showIndicators]="true">
-            <slide *ngFor="let item of annonce;let j = index ">
-                <div class="box" style="margin-left: 25%;">
-                    <div class="imgBx">
-                        <img src="{{item.photo}}">
+            <slide *ngFor="let item of annonce;let j = index " style="margin-left: 13%;">
+                <div class="box ">
+                    <div class="imgBx ">
+                        <img src={{item.photo}}>
                     </div>
-                    <div class="content">
+                    <div class="content ">
                         <h2>{{item.username}}<br> <span>{{item.description}}</span></h2>
                     </div>
                 </div>
             </slide>
         </carousel>
     </div>
+    <div class="col-md-auto">
 
-    <div class="col-lg-7 col-md-6 ml-auto mr-auto">
-        <table class="table">
+    </div>
+    <div class="col col-lg-6">
+        <table class="table ">
             <thead>
                 <tr>
-                    <th class="text-center">#</th>
+                    <th class="text-center ">#</th>
                     <th>Utilisateur</th>
                     <th>Description</th>
-                    <th class="td-actions text-right">Action</th>
+                    <th class="td-actions text-right ">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of annonce;let j = index ">
-                    <td class="text-center">{{j+1}}</td>
+                <tr *ngFor="let item of annonce;let j=index ">
+                    <td class="text-center ">{{j+1}}</td>
                     <td>{{item.username}}</td>
                     <td>{{item.description}}</td>
-                    <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" class="btn btn-info btn-sm btn-icon">
+                    <td class="td-actions text-right ">
+                        <button type="button " rel="tooltip " class="btn btn-info btn-sm btn-icon ">
                             <i  >voir</i>
                         </button>
                     </td>
