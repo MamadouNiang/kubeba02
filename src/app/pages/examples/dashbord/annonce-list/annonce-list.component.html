@@ -34,6 +34,9 @@
                                             Description :{{item.description}}
                                         </div>
                                         <div class="card-subtitle">
+                                            UserName :{{item.username}}
+                                        </div>
+                                        <div class="card-text">
                                             Typologie :{{item.typologie}}
                                         </div>
                                         <div class="card-text">
@@ -48,6 +51,7 @@
                                         <div class="card-text">
                                             Date de creation:{{item.dateCreation}}
                                         </div>
+
                                         <div class="card-text text-center">
                                             <button type="button" (click)="onViewMarchandise(j)" rel="tooltip" class="btn btn-info btn-sm btn-icon">
                                                 <i class="tim-icons icon-zoom-split" ></i>
@@ -199,6 +203,9 @@
                             </div>
                             <div class="form-group" hidden>
                                 <input type="text" class="form-control" formControlName="dateCreation">
+                            </div>
+                            <div class="form-group" hidden>
+                                <input type="text" class="form-control" formControlName="user" value={{user}}>
                             </div>
                             <div style=" display: flex; justify-content: center;">
                                 <button type="reset" class="btn btn-danger  mr-1" (click)="reset()">Vider</button>

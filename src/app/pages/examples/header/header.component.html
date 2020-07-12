@@ -154,16 +154,17 @@
                                 <!-- <h6 *ngIf="password.errors?.minlength" class="text-danger" style="text-align: end;">entrer au mois 8 carateres</h6> -->
                             </div>
                         </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-success mr-1" type="submit" [disabled]="!register.valid">Valider</button>
+                            <br>
+
+                        </div>
                         <div class="form-check mt-3" style="text-align: end;">
 
                             Vous n’avez pas de compte ?
                             <button class="btn btn-link btn-info mr-1" [routerLink]="['/register']">Inscrivez vous ?</button>
 
-
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-success mr-1" type="submit" [disabled]="!register.valid">Valider</button>
-                            <br>
 
                         </div>
                         <p class="text-danger" style="text-align: center;font-weight: bold;">{{errormessage}}</p>

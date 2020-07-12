@@ -35,6 +35,7 @@ import { AnnoncesService } from "../services/annonces.service";
 import { MessagesComponent } from "./examples/messages/messages.component";
 import { UsersComponent } from "./examples/users/users.component";
 import { AnnoncesCrudService } from "../services/annonces-crud.service";
+import { AnnonceCardsComponent } from "./index/annonce-cards/annonce-cards.component";
 
 @NgModule({
   imports: [
@@ -69,6 +70,7 @@ import { AnnoncesCrudService } from "../services/annonces-crud.service";
     FooterComponent,
     MessagesComponent,
     UsersComponent,
+    AnnonceCardsComponent,
   ],
   exports: [
     IndexComponent,
@@ -82,6 +84,7 @@ import { AnnoncesCrudService } from "../services/annonces-crud.service";
     AnnonceFormComponent,
     FooterComponent,
     UsersComponent,
+    AnnonceCardsComponent,
   ],
   providers: [
     AuthService,

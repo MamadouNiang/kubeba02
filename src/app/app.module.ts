@@ -32,12 +32,14 @@ import { environment } from "../environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+// import { AnnonceCardsComponent } from '.pages/index/annonce-cards/annonce-cards.component';
 
 // import { HeaderComponent } from "./pages/examples/header/header.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    // AnnonceCardsComponent,
     // HeaderComponent,
     // SingleAnnonceComponent,
     // AnnonceFormComponent,

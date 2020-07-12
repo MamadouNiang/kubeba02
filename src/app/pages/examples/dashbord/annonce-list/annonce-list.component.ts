@@ -5,6 +5,8 @@ import { AnnoncesService } from "src/app/services/annonces.service";
 import { Router } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AnnoncesCrudService } from "../../../../services/annonces-crud.service";
+import { UserCrudService } from "src/app/services/user-crud.service";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-annonce-list",
@@ -31,11 +33,15 @@ export class AnnonceListComponent implements OnInit, OnDestroy {
   autreClick: boolean;
   datime: any;
   errormessage: any;
+  user: any;
+  userC: any;
   constructor(
     private annonceService: AnnoncesService,
     private router: Router,
     private fb: FormBuilder,
-    private annoncecrudservice: AnnoncesCrudService
+    private annoncecrudservice: AnnoncesCrudService,
+    public userService: UserCrudService,
+    public authService: AuthService
   ) {
     const D = new Date().getDate();
     const M = new Date().getMonth();
@@ -63,10 +69,12 @@ export class AnnonceListComponent implements OnInit, OnDestroy {
           dateExp: e.payload.doc.data()["dateExp"],
           dateCreation: e.payload.doc.data()["dateCreation"],
           typologie: e.payload.doc.data()["typologie"],
+          username: e.payload.doc.data()["username"],
         };
       });
       // console.log(this.annonce);
     });
+    this.currentUser();
     this.marchandiseSubscription = this.annonceService.marchandisesSubject.subscribe(
       (marchandisess: Marchandise[]) => {
         this.marchandises = marchandisess;
@@ -75,6 +83,25 @@ export class AnnonceListComponent implements OnInit, OnDestroy {
     this.annonceService.getMarchandises();
     this.annonceService.emitMarchandise();
     this.initForm();
+  }
+
+  currentUser() {
+    this.userService.getAllUsers().subscribe((data) => {
+      this.user = data.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          emailF: e.payload.doc.data()["email"],
+          nomPrenom: e.payload.doc.data()["nom_prenom"],
+        };
+      });
+      for (let i = 0; i < this.user.length; i++) {
+        if (this.authService.currentUserName == this.user[i].emailF) {
+          console.log(this.user[i]);
+          this.userC = this.user[i];
+          this.user = this.user[i].nomPrenom;
+        }
+      }
+    });
   }
 
   autres() {
@@ -111,6 +138,7 @@ export class AnnonceListComponent implements OnInit, OnDestroy {
         { value: this.datime, disabled: true },
         Validators.required,
       ],
+      user: [{ value: this.user, disabled: true }, Validators.required],
     });
   }
   reset() {
@@ -132,6 +160,7 @@ export class AnnonceListComponent implements OnInit, OnDestroy {
     let dateLiv = this.marchandiseForm.get("dateLiv").value;
     let photo = this.marchandiseForm.get("photo").value;
     let dateCreation = this.marchandiseForm.get("dateCreation").value;
+    let username = this.user;
     let newMarchandise = new Marchandise(
       photo,
       description,
@@ -149,6 +178,7 @@ export class AnnonceListComponent implements OnInit, OnDestroy {
       dateExp,
       dateLiv,
       dateCreation,
+      username,
     };
     if (this.fileUrl && this.fileUrl !== "") {
       newMarchandise.photo = this.fileUrl;
