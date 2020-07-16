@@ -126,6 +126,7 @@
                                             <option >Employé</option>
                                         </select>
                                     </div>
+
                                     <div class="form-check text-left">
                                         <label class="form-check-label">
                                           <input formControlName="contrat" required class="form-check-input" type="checkbox" />
@@ -133,8 +134,8 @@
                                           <a href="javascript:void(0)"> les termes et les conditions </a> .
                                         </label>
                                     </div>
-                                    <div class="card-footer">
-                                        <button style="margin-left: 12%;" class="btn btn-danger  mr-1" (click)="reset()">Vider</button>
+                                    <div class="card-footer text-center">
+                                        <button class="btn btn-danger  mr-1" (click)="reset()">Vider</button>
                                         <button class="btn btn-success mr-1" type="submit" [disabled]="!register.valid">Valider</button>
 
                                     </div>

@@ -24,7 +24,7 @@
                         <div class="row p-2">
                             <div class="col-md-3" *ngFor="let item of annonce;let j = index ">
 
-                                <img style="max-width:100px;" alt="Raised  image" class="img-center img-fluid rounded-circle" *ngIf="item.photo" [src]="item.photo">
+                                <!-- <img style="max-width:50px;" alt="Raised  image" class="img-center img-fluid rounded-circle" *ngIf="item.photo" [src]="item.photo"> -->
 
 
                                 <div class="card" *ngIf="!item.isedit;">
@@ -51,17 +51,64 @@
                                         <div class="card-text">
                                             Date de creation:{{item.dateCreation}}
                                         </div>
-
                                         <div class="card-text text-center">
-                                            <button type="button" (click)="onViewMarchandise(j)" rel="tooltip" class="btn btn-info btn-sm btn-icon">
-                                                <i class="tim-icons icon-zoom-split" ></i>
+                                            <button *ngIf="item.username != user" data-target="#myModal" (click)="myModal.show()" type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                                    <i class="tim-icons icon-email-85"></i>
+                                                </button>
+                                            <button style="margin-left: 10%;" *ngIf="item.username == user || userT=='Employé'" data-target="#myModal1" (click)="myModal1.show()" type="button" rel="tooltip" class="btn btn-danger btn-sm btn-icon">
+                                                    <i class="tim-icons icon-simple-remove"></i>
                                             </button>
-                                            <button style="margin-left: 5%;" type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
-                                            <i class="tim-icons icon-email-85"></i>
-                                        </button>
-                                            <button style="margin-left: 5%;" type="button" (click)="onDeleteMarchandise(item.id,item.photo)" rel="tooltip" class="btn btn-danger btn-sm btn-icon">
-                                            <i class="tim-icons icon-simple-remove"></i>
-                                        </button>
+                                            <div aria-hidden="true" aria-labelledby="myModalLabel" bsModal class="modal fade modal-mini modal-primary modal-mini" #myModal1="bs-modal" id="myModal1" role="dialog" tabindex="-1">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header justify-content-center">
+                                                            <button aria-hidden="true" class="close" data-dismiss="modal" (click)="myModal1.hide()" type="button">
+                                                    <i class="tim-icons icon-simple-remove text-white"> </i>
+                                                  </button>
+                                                            <div class="modal-warning">
+                                                                <i class="tim-icons icon-alert-circle-exc"> </i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>voulez vous vraiment supprimer cet element de façon permanente ?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-link btn-success active  " type="button" (click)="onDeleteMarchandise(item.id,item.photo)">
+                                                    Supprimer
+                                                  </button>
+                                                            <button class="btn btn-link btn-danger active" data-dismiss="modal" type="button" (click)="myModal1.hide()">
+                                                    Fermer
+                                                  </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <button type="button" (click)="onViewMarchandise(j)" rel="tooltip" class="btn btn-info btn-sm btn-icon">
+                                                <i class="tim-icons icon-zoom-split" ></i>
+                                            </button> -->
+                                            <div aria-hidden="true" aria-labelledby="myModalLabel" bsModal class="modal fade" #myModal="bs-modal" id="myModal" role="dialog" tabindex="-1">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header justify-content-center">
+                                                            <button aria-hidden="true" class="close" data-dismiss="modal" type="button" (click)="myModal.hide()">
+                                                    <i class="tim-icons icon-simple-remove"> </i>
+                                                  </button>
+                                                            <h4 class="title title-up">Message</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>
+                                                                Bonjour, je suis très intéressé par votre offre
+                                                            </p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-success" type="button">Envoyer</button>
+                                                            <button class="btn btn-danger" data-dismiss="modal" type="button" (click)="myModal.hide()">
+                                                    Close
+                                                  </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -224,4 +271,5 @@
 
         </div>
     </div>
+
 </div>

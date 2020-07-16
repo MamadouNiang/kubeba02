@@ -11,7 +11,7 @@ import { AuthService } from "src/app/services/auth.service";
 @Component({
   selector: "app-annonce-list",
   templateUrl: "./annonce-list.component.html",
-  // styleUrls: ["./annonce-list.component.scss"],
+  styleUrls: ["./annonce-list.component.scss"],
 })
 export class AnnonceListComponent implements OnInit, OnDestroy {
   annonce: any;
@@ -34,7 +34,8 @@ export class AnnonceListComponent implements OnInit, OnDestroy {
   datime: any;
   errormessage: any;
   user: any;
-  userC: any;
+  userT: "";
+  cardSup = "";
   constructor(
     private annonceService: AnnoncesService,
     private router: Router,
@@ -92,13 +93,14 @@ export class AnnonceListComponent implements OnInit, OnDestroy {
           id: e.payload.doc.id,
           emailF: e.payload.doc.data()["email"],
           nomPrenom: e.payload.doc.data()["nom_prenom"],
+          userTypeF: e.payload.doc.data()["userType"],
         };
       });
       for (let i = 0; i < this.user.length; i++) {
         if (this.authService.currentUserName == this.user[i].emailF) {
-          console.log(this.user[i]);
-          this.userC = this.user[i];
+          let usert = this.user[i].userTypeF;
           this.user = this.user[i].nomPrenom;
+          this.userT = usert;
         }
       }
     });
@@ -186,7 +188,7 @@ export class AnnonceListComponent implements OnInit, OnDestroy {
     if (this.fileUrl && this.fileUrl !== "") {
       data.photo = this.fileUrl;
     }
-    this.annonceService.createNewMarchandise(newMarchandise);
+    // this.annonceService.createNewMarchandise(newMarchandise);
     this.annoncecrudservice
       .createNewAnnonce(data)
       .then((res) => {

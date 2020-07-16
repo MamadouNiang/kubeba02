@@ -31,7 +31,7 @@ export class AnnoncesService {
         this.marchandises = data.val() ? data.val() : [];
         this.emitMarchandise;
       });
-    console.log(this.marchandises);
+    // console.log(this.marchandises);
   }
 
   getSingleMarchandise(id: number) {
