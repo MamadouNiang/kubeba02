@@ -219,10 +219,10 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col"> <label>Date d'Expedition</label>
-                                    <input type="date" on-change="change()" placement="top" min="{{minDateExp | date:'yyyy-MM-dd'}}" formControlName="dateExp" class="form-control">
+                                    <input type="date" onkeydown="return false" on-change="change()" placement="top" min="{{minDateExp | date:'yyyy-MM-dd'}}" formControlName="dateExp" class="form-control">
                                 </div>
                                 <div class="col"> <label>Date Livraison</label>
-                                    <input type="date" placement="top" min="{{minDateLiv | date:'yyyy-MM-dd'}}" formControlName="dateLiv" class="form-control"></div>
+                                    <input type="date" onkeydown="return false" placement="top" min="{{minDateLiv | date:'yyyy-MM-dd'}}" formControlName="dateLiv" class="form-control"></div>
                             </div>
 
                             <div class="form-group">
